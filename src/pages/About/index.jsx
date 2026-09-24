@@ -24,7 +24,6 @@ import Tippy from "@tippyjs/react";
 import "tippy.js/dist/tippy.css";
 import ChillImg from "../../assets/imgs/images.jpg";
 import Img from "../../components/img";
-import HCMUTLogo from "../../assets/imgs/hcmut.png";
 import UITLogo from "../../assets/imgs/uit.png";
 import useSEO from "../../hooks/useSEO";
 import { pageVariants, sectionVariants, containerVariants, itemVariants } from "../../config/animations";
