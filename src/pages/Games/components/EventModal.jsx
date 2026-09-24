@@ -130,7 +130,7 @@ export default function EventModal({ event, onClose }) {
                     </div>
 
                     <div className="mt-12 text-center">
-                        <p className="text-[10px] text-slate-400 uppercase tracking-[0.2em]">LumiYi Gaming Experience</p>
+                        <p className="text-[10px] text-slate-400 uppercase tracking-[0.2em]">Forte Gaming Experience</p>
                     </div>
                 </div>
             </motion.div>

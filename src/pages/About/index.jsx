@@ -24,7 +24,7 @@ import Tippy from "@tippyjs/react";
 import "tippy.js/dist/tippy.css";
 import ChillImg from "../../assets/imgs/images.jpg";
 import Img from "../../components/img";
-import UITLogo from "../../assets/imgs/uit.png";
+import UTTLogo from "../../assets/imgs/utt.png";
 import useSEO from "../../hooks/useSEO";
 import { pageVariants, sectionVariants, containerVariants, itemVariants } from "../../config/animations";
 // Gallery import
@@ -268,16 +268,16 @@ Hy vọng trang web sẽ giúp bạn hiểu hơn về tôi và mở ra cơ hội
                 <FontAwesomeIcon icon={faUserGraduate} />
                 <p>Education</p>
               </div>
-              {/* UIT */}
+              {/* UTT */}
               <div className="flex mt-6 gap-3 items-center">
-                <Tippy content="UIT - Đại học Công nghệ Thông tin">
+                <Tippy content="UTT - CN GTVT">
                   <motion.div
                     whileHover={{ scale: 1.1 }}
                     className="w-12 h-12 rounded-xl bg-white flex items-center justify-center border shadow cursor-pointer p-1"
                   >
                     <img
-                      src={UITLogo}
-                      alt="UIT"
+                      src={UTTLogo}
+                      alt="UTT"
                       className="w-full h-full object-contain"
                     />
                   </motion.div>
