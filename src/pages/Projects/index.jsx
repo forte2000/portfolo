@@ -33,7 +33,7 @@ function Projects() {
       </motion.div>
 
       <motion.div variants={sectionVariants}>
-        <GithubProjects username="forte" />
+        <GithubProjects username="forte2000" />
       </motion.div>
     </motion.div>
   );

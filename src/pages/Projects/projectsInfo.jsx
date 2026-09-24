@@ -13,7 +13,7 @@ const ProjectDetails = () => {
   const [readme, setReadme] = useState(null);
   const [error, setError] = useState(null);
   const [languages, setLanguages] = useState(null);
-  const userGithub = "forte";
+  const userGithub = "forte2000";
 
   // ✅ Fetch README.md dựa trên default_branch
   const fetchReadme = useCallback(
