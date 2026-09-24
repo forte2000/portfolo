@@ -1,0 +1,26 @@
+{
+  "short_name": "LumiYi",
+  "name": "LumiYi - Personal Portfolio",
+  "icons": [
+    {
+      "src": "2.gif",
+      "sizes": "192x192",
+      "type": "image/gif",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "2.gif",
+      "sizes": "512x512",
+      "type": "image/gif",
+      "purpose": "any maskable"
+    }
+  ],
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#f9a8d4",
+  "background_color": "#000000",
+  "description": "Forte's personal portfolio website",
+  "orientation": "portrait-primary",
+  "scope": "/",
+  "lang": "en"
+}

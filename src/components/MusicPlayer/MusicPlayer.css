@@ -1,0 +1,596 @@
+#music-player {
+    position: fixed;
+    bottom: 16px;
+    right: 10px;
+    left: auto;
+    z-index: 9999;
+    background: rgba(255, 255, 255, 0.85);
+    /* Light Glass */
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid #e2e8f0;
+    /* Slate-200 */
+    border-radius: 20px;
+    padding: 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    box-shadow:
+        0 4px 20px rgba(0, 0, 0, 0.08),
+        0 1px 3px rgba(0, 0, 0, 0.05);
+    /* Softer shadow */
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    /* Inherit font-family from body (Recursive) */
+    width: auto;
+    max-width: 320px;
+    color: #1e293b;
+    /* Slate-800 */
+    overflow: hidden;
+}
+
+/* Desktop: fixed position on right */
+@media (min-width: 640px) {
+    #music-player {
+        left: auto;
+        right: 10px;
+        bottom: 24px;
+        width: 320px;
+        padding: 16px;
+        gap: 12px;
+    }
+}
+
+/* Dark mode overrides for music player */
+html.dark #music-player {
+    background: rgba(15, 23, 42, 0.85);
+    /* Slate-900 */
+    border-color: #334155;
+    /* Slate-700 */
+    color: #f1f5f9;
+    /* Slate-100 */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+}
+
+html.dark #music-player:hover {
+    background: rgba(15, 23, 42, 0.95);
+}
+
+html.dark #music-player.minimized {
+    background: #0f172a;
+    border-color: #334155;
+}
+
+html.dark #music-player.minimized:hover {
+    background: #1e293b;
+}
+
+html.dark .mp-title {
+    color: #f8fafc;
+    /* Slate-50 */
+}
+
+html.dark .mp-status {
+    color: #94a3b8;
+    /* Slate-400 */
+}
+
+html.dark .mp-mini-icon {
+    color: #e2e8f0;
+    /* Slate-200 */
+}
+
+html.dark .mp-btn {
+    color: #94a3b8;
+    /* Slate-400 */
+}
+
+html.dark .mp-btn:hover {
+    background: #1e293b;
+    /* Slate-800 */
+    color: #f1f5f9;
+    /* Slate-100 */
+}
+
+html.dark .mp-btn.main-c {
+    background: #f1f5f9;
+    /* Slate-100 (Inverted for dark mode to stand out) */
+    color: #0f172a;
+    /* Slate-900 */
+    box-shadow: 0 4px 10px rgba(255, 255, 255, 0.1);
+}
+
+html.dark .mp-btn.main-c:hover {
+    background: #fff;
+    transform: scale(1.05);
+}
+
+html.dark .mp-btn.active {
+    color: #f1f5f9;
+    background: #334155;
+    /* Slate-700 */
+}
+
+html.dark .mp-progress-bg {
+    background: #334155;
+    /* Slate-700 */
+}
+
+html.dark .mp-progress-bar {
+    background: #f1f5f9;
+    /* Slate-100 */
+}
+
+html.dark .mp-playlist {
+    border-top-color: #334155;
+    /* Slate-700 */
+}
+
+html.dark .mp-playlist::-webkit-scrollbar-thumb {
+    background: #475569;
+    /* Slate-600 */
+}
+
+html.dark .mp-track-item {
+    color: #cbd5e1;
+    /* Slate-300 */
+}
+
+html.dark .mp-track-item:hover {
+    background: #1e293b;
+    /* Slate-800 */
+    color: #f1f5f9;
+}
+
+html.dark .mp-track-item.active {
+    background: #1e293b;
+    /* Slate-800 */
+    color: #fff;
+}
+
+html.dark .vol-slider {
+    background: #334155;
+    /* Slate-700 */
+}
+
+html.dark .vol-slider::-webkit-slider-thumb {
+    background: #f1f5f9;
+    /* Slate-100 */
+    border-color: #0f172a;
+    /* Slate-900 */
+}
+
+#music-player:hover {
+    background: rgba(255, 255, 255, 0.95);
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+    transform: translateY(-2px);
+}
+
+#music-player.minimized {
+    width: 50px !important;
+    height: 50px !important;
+    min-width: 50px;
+    max-width: 50px;
+    padding: 0;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    background: #fff;
+    border: 1px solid #e2e8f0;
+    left: auto !important;
+    right: 16px;
+    bottom: 16px;
+    gap: 0;
+}
+
+@media (min-width: 640px) {
+    #music-player.minimized {
+        width: 56px !important;
+        height: 56px !important;
+        min-width: 56px;
+        max-width: 56px;
+        right: 20px;
+        bottom: 24px;
+    }
+}
+
+#music-player.minimized:hover {
+    transform: scale(1.05);
+    background: #f8fafc;
+    /* Slate-50 */
+}
+
+/* Main Control Area */
+.mp-main {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.mp-info {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    margin-right: 12px;
+    flex: 1;
+}
+
+.mp-title {
+    font-size: 14px;
+    font-weight: 700;
+    /* Recursive tends to look good with higher weight headers */
+    color: #0f172a;
+    /* Slate-900 */
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin-bottom: 2px;
+}
+
+.mp-status {
+    font-size: 11px;
+    color: #64748b;
+    /* Slate-500 */
+    font-weight: 500;
+    display: flex;
+    justify-content: space-between;
+}
+
+/* Minimized View Elements */
+.mp-mini-icon {
+    font-size: 20px;
+    color: #1e293b;
+    /* Slate-800 fallback */
+    animation: spin 4s linear infinite;
+}
+
+/* Base Spotify Color Helper */
+.spotify-green {
+    color: #1DB954 !important;
+}
+
+/* Fix Spotify color in minimized state */
+.mp-mini-icon .fa-spotify {
+    color: #1DB954 !important;
+}
+
+.mp-mini-icon.paused {
+    animation-play-state: paused;
+}
+
+/* New Track Info Container Styles */
+.mp-info-container {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.mp-track-icon {
+    width: 38px;
+    height: 38px;
+    background: #f1f5f9;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    color: #475569;
+    flex-shrink: 0;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+html.dark .mp-track-icon {
+    background: #1e293b;
+    color: #94a3b8;
+}
+
+.mp-track-icon.spinning i {
+    animation: spin 3s linear infinite;
+}
+
+.mp-info-text {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+@keyframes spin {
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/* Controls */
+.mp-controls {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.mp-btn {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    color: #64748b;
+    /* Slate-500 */
+    padding: 6px;
+    border-radius: 50%;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+}
+
+.mp-btn:hover {
+    background: #f1f5f9;
+    /* Slate-100 */
+    color: #0f172a;
+    /* Slate-900 */
+}
+
+.mp-btn.main-c {
+    background: #1e293b;
+    /* Slate-800 - Matching Header 'hover' state as primary */
+    color: white;
+    box-shadow: 0 4px 10px rgba(30, 41, 59, 0.3);
+}
+
+.mp-btn.main-c:hover {
+    background: #0f172a;
+    /* Slate-900 */
+    transform: scale(1.05);
+}
+
+.mp-btn.active {
+    color: #1e293b;
+    /* Slate-800 */
+    background: #e2e8f0;
+    /* Slate-200 */
+}
+
+/* Toggle Buttons */
+.mp-actions {
+    display: flex;
+    gap: 4px;
+    margin-left: 8px;
+}
+
+/* Progress Bar */
+.mp-progress-container {
+    width: 100%;
+    padding: 10px 0;
+    cursor: pointer;
+    position: relative;
+    margin-top: 4px;
+}
+
+.mp-progress-bg {
+    width: 100%;
+    height: 6px;
+    background: #e2e8f0;
+    /* Slate-200 */
+    border-radius: 10px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+.mp-progress-bar {
+    height: 100%;
+    background: #1e293b;
+    /* Slate-800 */
+    border-radius: 10px;
+    transition: width 0.1s linear;
+    position: relative;
+}
+
+html.dark .mp-progress-bg {
+    background: #334155;
+}
+
+html.dark .mp-progress-bar {
+    background: #f1f5f9;
+}
+
+/* Range input overlay */
+.mp-seek-slider {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    cursor: pointer;
+    margin: 0;
+}
+
+/* Playlist Drawer */
+.mp-playlist {
+    margin-top: 12px;
+    padding-top: 12px;
+    border-top: 1px solid #e2e8f0;
+    /* Slate-200 */
+    max-height: 150px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.mp-playlist::-webkit-scrollbar {
+    width: 4px;
+}
+
+.mp-playlist::-webkit-scrollbar-thumb {
+    background: #cbd5e1;
+    /* Slate-300 */
+    border-radius: 2px;
+}
+
+.mp-track-item {
+    display: flex;
+    align-items: center;
+    padding: 8px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.2s;
+    font-size: 12px;
+    color: #475569;
+    /* Slate-600 */
+}
+
+.mp-track-item:hover {
+    background: #f1f5f9;
+    /* Slate-100 */
+    color: #1e293b;
+}
+
+.mp-track-item.active {
+    background: #f1f5f9;
+    /* Slate-100 */
+    color: #1e293b;
+    /* Slate-800 */
+    font-weight: 600;
+}
+
+.mp-track-item i {
+    margin-right: 8px;
+    font-size: 10px;
+}
+
+/* Volume Control */
+.vol-container {
+    display: flex;
+    align-items: center;
+    width: 0px;
+    overflow: hidden;
+    transition: width 0.3s ease;
+}
+
+.mp-controls:hover .vol-container {
+    width: 60px;
+    margin-left: 8px;
+}
+
+.vol-slider {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 100%;
+    height: 3px;
+    background: #cbd5e1;
+    /* Slate-300 */
+    border-radius: 2px;
+    outline: none;
+}
+
+.vol-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 10px;
+    height: 10px;
+    background: #1e293b;
+    /* Slate-800 */
+    border-radius: 50%;
+    cursor: pointer;
+    border: 2px solid #fff;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+/* Status Dot Indicator */
+.mp-status-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #94a3b8;
+    margin-right: 6px;
+    transition: all 0.3s ease;
+}
+
+.mp-status-dot.playing {
+    background: #1DB954;
+    box-shadow: 0 0 8px rgba(29, 185, 84, 0.6);
+    animation: pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes pulse {
+
+    0%,
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+
+    50% {
+        opacity: 0.7;
+        transform: scale(1.2);
+    }
+}
+
+/* Spotify Embed Container */
+.mp-spotify-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    margin-top: 4px;
+}
+
+.mp-embed {
+    transition: opacity 0.3s ease;
+}
+
+.mp-embed iframe {
+    border-radius: 12px !important;
+}
+
+/* Loading State */
+.mp-loading {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 20px;
+    color: #1DB954;
+    font-size: 13px;
+    font-weight: 500;
+}
+
+.mp-loading i {
+    font-size: 24px;
+}
+
+/* Spinning Icon for Active Track */
+.mp-track-item i.spinning {
+    animation: spin 2s linear infinite;
+    color: #1DB954;
+}
+
+/* Spotify Green Color for track icons */
+.mp-track-item i.fa-spotify {
+    color: #1DB954;
+    font-size: 14px;
+}
+
+html.dark .mp-track-item i.fa-spotify {
+    color: #1DB954;
+}
+
+/* Spotify Badge */
+.mp-spotify-badge {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    color: #1DB954;
+    font-size: 11px;
+    font-weight: 600;
+    background: rgba(29, 185, 84, 0.1);
+    padding: 4px 12px;
+    border-radius: 20px;
+}
+
+html.dark .mp-spotify-badge {
+    background: rgba(29, 185, 84, 0.15);
+}
