@@ -27,6 +27,7 @@ const isSpotifySource = (src) => {
 };
 
 const musicTracks = [
+    { src: "/music/Beethoven - Moonlight Sonata (Full) [4591dCHe_sE].mp3", name: "Beethoven - Moonlight Sonata (Full)" },
     { src: "/music/NormalNoMore.mp3", name: "Normal No More" },
     { src: "/music/SYENSAN.mp3", name: "SYENSAN" },
     { src: "https://open.spotify.com/track/6GM4ZOBDcDroldUxI8GZ2B?si=b14b942b3a7945d5", name: "Ai Ngoài Anh" },
@@ -350,10 +351,9 @@ export default function MusicPlayer() {
 
     // -- Effects --
 
-    // Initialize random track on mount
+    // Initialize track on mount (Beethoven - Moonlight Sonata)
     useEffect(() => {
-        const startIdx = Math.floor(Math.random() * musicTracks.length);
-        setCurrentTrackIndex(startIdx);
+        setCurrentTrackIndex(0);
     }, []);
 
     // Handle track changes and autoplay for local audio

@@ -2,7 +2,7 @@ import PropTypes from "prop-types";
 import Header from "../Header";
 import Navbar from "../Navbar";
 import Footer from "../Footer";
-import background from "../../assets/video/kuroha.mp4";
+import background from "../../assets/video/reze-flower-field-chainsaw-man-moewalls-com.mp4";
 import { motion } from "framer-motion";
 import { containerVariants, itemVariants } from "../../config/animations";
 
