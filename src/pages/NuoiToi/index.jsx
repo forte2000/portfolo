@@ -54,7 +54,7 @@ function Support() {
     // Generate QR URL based on VietQR API
     const generateQR = useCallback(() => {
         setIsGenerating(true);
-        const description = encodeURIComponent(message || "Support LumiYi");
+        const description = encodeURIComponent(message || "Support Forte");
         const url = `https://img.vietqr.io/image/${BANK_CONFIG.bankId}-${BANK_CONFIG.accountNo}-${BANK_CONFIG.template}.png?amount=${amount}&addInfo=${description}&accountName=${encodeURIComponent(BANK_CONFIG.accountName)}`;
 
         // Simulate a brief loading for aesthetic feel

@@ -105,7 +105,7 @@ export default function Games() {
   }, [activeGame, activeTab]);
 
   useEffect(() => {
-    document.title = "Games | LumiYi";
+    document.title = "Games | Forte";
     load();
 
     return () => {

@@ -1,6 +1,6 @@
-# Building LumiYi
+# Building Forte Portfolio
 
-LumiYi is my personal portfolio website built with modern web technologies.
+Forte is my personal portfolio website built with modern web technologies.
 
 ## Tech Stack
 

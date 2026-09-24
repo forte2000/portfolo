@@ -1,7 +1,7 @@
 {
-  "name": "lumiyi",
+  "name": "forte",
   "version": "1.0.0",
-  "description": "LumiYi - Personal Portfolio Website",
+  "description": "Forte - Personal Portfolio Website",
   "private": true,
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^6.7.2",

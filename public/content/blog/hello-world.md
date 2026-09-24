@@ -12,4 +12,4 @@ Welcome to my blog section. This is a sample post rendered from **Markdown**.
 console.log("Hello from the devlog!");
 ```
 
-Stay tuned for more updates on **LumiYi**!
+Stay tuned for more updates on **Forte**!

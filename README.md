@@ -10,7 +10,7 @@ Welcome to **forte**, a modern, feature-rich, and interactive personal portfolio
 
 ## 🍃 Features
 
-LumiYi is packed with cool features to make your portfolio stand out:
+Forte Portfolio is packed with cool features to make your portfolio stand out:
 
 ### 🎨 UI/UX Design
 - **Modern Aesthetic:** Clean, minimalist design with a touch of "glassmorphism" and vibrant colors.
@@ -81,8 +81,8 @@ Follow these steps to get the project running on your local machine.
 
 1.  **Clone the Repository:**
     ```bash
-    git clone https://github.com/forte/portfolo.git
-    cd LumiYi
+    git clone https://github.com/forte2000/portfolo.git
+    cd portfolo
     ```
 
 2.  **Install Dependencies:**
@@ -109,7 +109,7 @@ Follow these steps to get the project running on your local machine.
 ## 📁 Project Structure
 
 ```
-LumiYi/
+portfolo/
 ├── public/                  # Static assets (favicons, manifest, robots.txt)
 │   └── content/blog/        # Markdown files for Blog posts
 ├── src/

@@ -14,7 +14,7 @@ Every page should have unique meta tags:
 
 ```html
 <head>
-    <title>LumiYi | Web Developer Portfolio</title>
+    <title>Forte | Web Developer Portfolio</title>
     <meta name="description" content="Full-stack developer portfolio..." />
     <meta name="keywords" content="web developer, react, portfolio" />
 </head>
@@ -25,10 +25,10 @@ Every page should have unique meta tags:
 For social media sharing:
 
 ```html
-<meta property="og:title" content="LumiYi Portfolio" />
+<meta property="og:title" content="Forte Portfolio" />
 <meta property="og:description" content="..." />
 <meta property="og:image" content="https://..." />
-<meta property="og:url" content="https://lumiyi.dev" />
+<meta property="og:url" content="https://forte.is-a.dev" />
 ```
 
 ### 3. Semantic HTML
@@ -82,9 +82,9 @@ Help search engines understand your site content:
 {
     "@context": "https://schema.org",
     "@type": "Person",
-    "name": "LumiYi",
+    "name": "Forte",
     "jobTitle": "Web Developer",
-    "url": "https://lumiyi.dev"
+    "url": "https://forte.is-a.dev"
 }
 ```
 
