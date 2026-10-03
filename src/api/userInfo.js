@@ -122,15 +122,15 @@ function UserInfo() {
           </div>
           <div className="text-gray-900 dark:text-gray-100">
             <h2 className="font-semibold text-2xl">
-              Hi , I`m{" "}
-              <Tippy animation="scale" content="Quang Huy">
+              Hi, I`m{" "}
+              <Tippy animation="scale" content="Lương Lợi">
                 <span className="text-slate-700 dark:text-slate-200">Forte</span>
               </Tippy>{" "}
               👋
             </h2>
             <div className="w-full h-1 bg-slate-700 rounded-sm my-1"></div>
             <div className="font-semibold text-justify">
-              Halo Halo I`m Forte (<span className="text-slate-700 dark:text-slate-300">200x</span>), Deverloper, Designer Minecraft{" "}
+              Halo Halo I`m Forte (<span className="text-slate-700 dark:text-slate-300">200x</span>), Developer, Designer{" "}
               <Link className="text-slate-600 dark:text-slate-400 underline" to="/skills">
                 About me ?
               </Link>{" "}
@@ -280,7 +280,7 @@ function UserInfo() {
           <div className="text-gray-900 dark:text-gray-100">
             <h2 className="font-semibold text-2xl">
               Hi, I`m{" "}
-              <Tippy animation="scale" content="Quang Huy">
+              <Tippy animation="scale" content="Lương Lợi">
                 <span className="text-slate-700 dark:text-slate-200">Forte</span>
               </Tippy>{" "}
               👋
